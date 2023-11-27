@@ -18,7 +18,7 @@ import plotly.express as px
 import time
 
 #st.sidebar.header("Questions")
-st.set_page_config(page_title="Model UI", page_icon="📹")
+#st.set_page_config(page_title="Model UI", page_icon="📹")
 
 # Define the wrapper class as before
 class ZeroShotClassificationPipeline:
@@ -37,14 +37,14 @@ class ZeroShotClassificationPipeline:
 col1, col2, col3 = st.columns([0.2, 0.6, 0.2])
 
 with col1:
-    st.image("logo.png")
+    st.image("./images/logo.png")
 
 with col2:
     # Streamlit app starts here
     st.markdown("<h1 style='text-align: center;'>The Hugging Stack</h1>", unsafe_allow_html=True)
 
 with col3:
-    st.image("logo.png")
+    st.image("./images/logo.png")
 
 
 # User input for the text
