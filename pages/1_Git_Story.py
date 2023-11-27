@@ -23,9 +23,11 @@ def get_git_commits():
         ['git', 'log', '--pretty=format:%h,%an,%ad,%s', '--date=short'],
         encoding='utf-8'
     )
-    
+    print(git_log_output)
     # Split the output into lines and then into a list of lists
-    lines = git_log_output.strip().split('\\n')
+    lines = git_log_output.strip().split('\n')
+
+    print(lines)
     commit_data = [line.split(',', 3) for line in lines]
     
     # Convert to DataFrame
