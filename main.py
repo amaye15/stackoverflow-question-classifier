@@ -13,9 +13,12 @@
 # limitations under the License.
 
 import streamlit as st
+import pandas as pd
 import requests
 import plotly.express as px
 import time
+
+
 
 #st.sidebar.header("Questions")
 st.set_page_config(page_title="Model UI", page_icon="📹")
@@ -64,8 +67,56 @@ def classify_text(_zero_shot_pipeline, input_text, candidate_labels):
         return response, True  # Return the response and a flag indicating to wait
     return response, False  # Return the response and a flag indicating no need to wait
 
+but1, but2 = st.columns(2)
+
+with but1:
+    classify = st.button('Classify')
+
+with but2:
+    generate = st.button('Generate')
+
+
 # Button to perform classification
-if st.button('Classify'):
+if classify:
+    # Initialize the zero-shot classification pipeline
+    zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
+    # Display a loading message and make the API request
+    with st.spinner('Checking model status...'):
+        result, should_wait = classify_text(zero_shot_pipeline, input_text, candidate_labels)
+    # If the model was loading, wait for the estimated time and then retry
+    while should_wait:
+        with st.spinner(f'Model is loading, please wait... Estimated time: {result["estimated_time"]:.2f} seconds'):
+            time.sleep(result["estimated_time"])  # Wait for the estimated time
+            result, should_wait = classify_text(zero_shot_pipeline, input_text, candidate_labels)
+    # If there's no error, proceed to display results
+    if not should_wait and 'labels' in result and 'scores' in result:
+        # Extract the labels and scores
+        labels = result['labels']
+        scores = result['scores']
+        labels.reverse()
+        scores.reverse()
+        # Create a Plotly bar plot
+        fig = px.bar(x=scores, 
+                     y=labels, 
+                     orientation='h', 
+                     labels={'x':'Score', 'y':'Label'}, 
+                     title='Zero-Shot Classification Results', 
+                     )
+        fig.update_layout(xaxis_title='Score', yaxis_title='Label')
+        # Display the Plotly bar plot
+        st.plotly_chart(fig)
+
+# Button to perform classification
+if generate:
+    df = pd.read_pickle("data/StackOverFlow.pkl.gz")
+    df["Label"] = df.Tags.str.split(",").apply(lambda x: x[0])
+
+    sample = df.sample(1)
+
+    input_text = sample["Title"][0]
+
+    candidate_labels = df["Label"].unique().tolist()
+
     # Initialize the zero-shot classification pipeline
     zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
     # Display a loading message and make the API request
