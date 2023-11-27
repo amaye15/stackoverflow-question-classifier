@@ -16,7 +16,7 @@ import subprocess
 import os
 
 # Path for the generated video
-video_path = 'git_history_video.mp4'
+video_path = '/app/stackoverflow-question-classifier/git-story_media/videos/1080p60/GitStory.mp4'
 
 # Check if the video already exists and delete it if so
 if os.path.exists(video_path):
@@ -24,7 +24,7 @@ if os.path.exists(video_path):
 
 # Use subprocess to call git-story and generate the video
 try:
-    subprocess.run(['git-story', '--media-dir', video_path], check=True)
+    subprocess.run(['git-story'], check=True)
     # Display the video in Streamlit
     st.video(video_path)
 except subprocess.CalledProcessError as e:
