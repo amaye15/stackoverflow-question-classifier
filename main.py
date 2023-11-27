@@ -14,6 +14,7 @@
 
 import streamlit as st
 import pandas as pd
+import numpy as np
 import requests
 import plotly.express as px
 import time
@@ -115,7 +116,7 @@ if generate:
 
     input_text = sample["Title"].values[0]
 
-    candidate_labels = [*sample["Label"].values.tolist(), *df["Label"].unique().sample(5).tolist()]
+    candidate_labels = [*sample["Label"].values.tolist(), *np.random.choice(df["Label"].unique(), size=5).tolist()]
 
     # Initialize the zero-shot classification pipeline
     zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
