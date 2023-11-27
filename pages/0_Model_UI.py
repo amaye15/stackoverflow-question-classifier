@@ -5,27 +5,9 @@ import numpy as np
 import requests
 import plotly.express as px
 import time
-from functions import generate_title
-
-#st.sidebar.header("Questions")
-#st.set_page_config(page_title="Model UI", page_icon="📹")
-
-# Define the wrapper class as before
-class ZeroShotClassificationPipeline:
-    def __init__(self, model_name, api_token):
-        self.api_url = f"https://api-inference.huggingface.co/models/{model_name}"
-        self.headers = {"Authorization": f"Bearer {api_token}"}
-
-    def __call__(self, inputs, candidate_labels, multi_label=False):
-        data = {
-            "inputs": inputs,
-            "parameters": {"candidate_labels": candidate_labels, "multi_label": multi_label}
-        }
-        response = requests.post(self.api_url, headers=self.headers, json=data)
-        return response.json()
+from functions import generate_title, ZeroShotClassificationPipeline
 
 generate_title()
-
 
 # User input for the text
 input_text = st.text_area("Write your question here:", "")
@@ -53,12 +35,12 @@ with but1:
 with but2:
     generate = st.button('Generate')
 
+# Initialize the zero-shot classification pipeline
+zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
+
 
 # Button to perform classification
 if classify:
-
-    # Initialize the zero-shot classification pipeline
-    zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
 
     # Display a loading message and make the API request
     with st.spinner('Checking model status...'):
@@ -99,9 +81,6 @@ if generate:
     input_text = sample["Title"].values[0]
     top_labels = list(df["Label"].value_counts().to_dict().keys())[:8]
     candidate_labels = list(set([*sample["Label"].values.tolist(), *top_labels]))
-
-    # Initialize the zero-shot classification pipeline
-    zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
 
     # Display a loading message and make the API request
     with st.spinner('Checking model status...'):
