@@ -68,6 +68,8 @@ if st.button('Classify'):
         # Extract the labels and scores
         labels = result['labels']
         scores = result['scores']
+        labels.reverse()
+        scores.reverse()
         # Create a Plotly bar plot
         fig = px.bar(
             x=scores, y=labels, 
