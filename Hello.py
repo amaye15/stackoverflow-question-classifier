@@ -31,7 +31,7 @@ class ZeroShotClassificationPipeline:
         response = requests.post(self.api_url, headers=self.headers, json=data)
         return response.json()
 
-st.image("images/logo.png")
+st.image("logo.png")
 
 # Streamlit app starts here
 st.title('The Hugging Stack')
