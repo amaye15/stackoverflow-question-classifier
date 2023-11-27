@@ -54,7 +54,7 @@ def classify_text(_zero_shot_pipeline, input_text, candidate_labels):
 # Button to perform classification
 if st.button('Classify'):
     # Initialize the zero-shot classification pipeline
-    zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", "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")
+    zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", "hf_BTMDuuAqliBebIVMaxHuuKwFQwOYTntUEpkkk")
     # Display a loading message and make the API request
     with st.spinner('Checking model status...'):
         result, should_wait = classify_text(zero_shot_pipeline, input_text, candidate_labels)
