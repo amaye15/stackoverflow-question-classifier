@@ -31,14 +31,14 @@ class ZeroShotClassificationPipeline:
         response = requests.post(self.api_url, headers=self.headers, json=data)
         return response.json()
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns([0.2, 0.6, 0.2])
 
 with col2:
 
     st.image("logo.png")
 
     # Streamlit app starts here
-    st.title('The Hugging Stack')
+    st.title('The Hugging Stack',)
 
 
 # User input for the text
