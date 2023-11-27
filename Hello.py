@@ -38,7 +38,7 @@ with col1:
 
 with col2:
     # Streamlit app starts here
-    st.title("\tThe Hugging Stack")
+    st.markdown("<h1 style='text-align: center;'>The Hugging Stack</h1>", unsafe_allow_html=True)
 
 with col3:
     st.image("logo.png")
