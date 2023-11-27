@@ -11,46 +11,47 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-import time
-
-import numpy as np
-
 import streamlit as st
-from streamlit.hello.utils import show_code
+import pandas as pd
+import altair as alt
+import subprocess
+
+# Function to get commits from git log
+def get_git_commits():
+    # Use subprocess to execute the git log command and capture the output
+    git_log_output = subprocess.check_output(
+        ['git', 'log', '--pretty=format:%h,%an,%ad,%s', '--date=short'],
+        encoding='utf-8'
+    )
+    
+    # Split the output into lines and then into a list of lists
+    lines = git_log_output.strip().split('\\n')
+    commit_data = [line.split(',', 3) for line in lines]
+    
+    # Convert to DataFrame
+    df_commits = pd.DataFrame(commit_data, columns=['hash', 'author', 'date', 'message'])
+    df_commits['date'] = pd.to_datetime(df_commits['date'])
+    return df_commits
+
+# Load the commit data
+df_commits = get_git_commits()
+
+# Sort the commits by date
+df_commits.sort_values('date', inplace=True)
+
+# Create an interactive chart using Altair
+chart = alt.Chart(df_commits).mark_circle(size=60).encode(
+    x='date:T',
+    y='author:N',
+    color='author:N',
+    tooltip=['date:T', 'author:N', 'message:N', 'hash:N']
+).interactive()
+
+st.title('Git Commit History Timeline')
+st.altair_chart(chart, use_container_width=True)
 
 
-def plotting_demo():
-    progress_bar = st.sidebar.progress(0)
-    status_text = st.sidebar.empty()
-    last_rows = np.random.randn(1, 1)
-    chart = st.line_chart(last_rows)
+st.set_page_config(page_title="Git Story", page_icon="📈")
+st.markdown("# Git Story")
+st.sidebar.header("Git Story")
 
-    for i in range(1, 101):
-        new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
-        status_text.text("%i%% Complete" % i)
-        chart.add_rows(new_rows)
-        progress_bar.progress(i)
-        last_rows = new_rows
-        time.sleep(0.05)
-
-    progress_bar.empty()
-
-    # Streamlit widgets automatically run the script from top to bottom. Since
-    # this button is not connected to any other logic, it just causes a plain
-    # rerun.
-    st.button("Re-run")
-
-
-st.set_page_config(page_title="Plotting Demo", page_icon="📈")
-st.markdown("# Plotting Demo")
-st.sidebar.header("Plotting Demo")
-st.write(
-    """This demo illustrates a combination of plotting and animation with
-Streamlit. We're generating a bunch of random numbers in a loop for around
-5 seconds. Enjoy!"""
-)
-
-plotting_demo()
-
-show_code(plotting_demo)
