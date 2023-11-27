@@ -39,7 +39,7 @@ def get_git_commits():
 # Load the commit data
 df_commits = get_git_commits()
 
-st.dataframe(df_commits)
+st.dataframe(df_commits, use_container_width=True)
 
 # We do not need to sort by date since we're plotting by commit index
 # df_commits.sort_values('date', inplace=True)
