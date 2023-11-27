@@ -33,7 +33,7 @@ def get_git_commits():
     df_commits = pd.DataFrame(commit_data, columns=['hash', 'author', 'date', 'message'])
     df_commits['date'] = pd.to_datetime(df_commits['date'])
     # Add an index column that will serve as a quantitative scale for the y-axis
-    df_commits['index'] = range(len(df_commits))
+    #df_commits['index'] = range(len(df_commits))
     return df_commits
 
 # Load the commit data
