@@ -139,7 +139,7 @@ if generate:
                      y=labels, 
                      orientation='h', 
                      labels={'x':'Score', 'y':'Label'}, 
-                     title=input_text, 
+                     title= f"{sample['Label'].values[0]} - {input_text}", 
                      )
         fig.update_layout(xaxis_title='Score', yaxis_title='Label')
         # Display the Plotly bar plot
