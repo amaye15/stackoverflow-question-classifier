@@ -51,7 +51,7 @@ st.title('Git Commit History Timeline')
 st.altair_chart(chart, use_container_width=True)
 
 
-st.set_page_config(page_title="Git Story", page_icon="📈")
-st.markdown("# Git Story")
-st.sidebar.header("Git Story")
+#st.set_page_config(page_title="Git Story", page_icon="📈")
+#st.markdown("# Git Story")
+#st.sidebar.header("Git Story")
 
