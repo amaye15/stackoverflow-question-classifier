@@ -66,6 +66,7 @@ def classify_text(_zero_shot_pipeline, input_text, candidate_labels):
     response = zero_shot_pipeline(input_text, candidate_labels)
     if "error" in response and "estimated_time" in response:  # Check if the model is still loading
         return response, True  # Return the response and a flag indicating to wait
+    print(response, flush=True)
     return response, False  # Return the response and a flag indicating no need to wait
 
 but1, but2 = st.columns(2)
