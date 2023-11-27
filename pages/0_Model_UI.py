@@ -5,6 +5,7 @@ import numpy as np
 import requests
 import plotly.express as px
 import time
+from functions import generate_title
 
 #st.sidebar.header("Questions")
 #st.set_page_config(page_title="Model UI", page_icon="📹")
@@ -23,14 +24,7 @@ class ZeroShotClassificationPipeline:
         response = requests.post(self.api_url, headers=self.headers, json=data)
         return response.json()
 
-col1, col2, col3 = st.columns([0.2, 0.6, 0.2])
-
-with col1:
-    st.image("./images/logo.png")
-with col2:
-    st.markdown("<h1 style='text-align: center;'>The Hugging Stack</h1>", unsafe_allow_html=True)
-with col3:
-    st.image("./images/logo.png")
+generate_title()
 
 
 # User input for the text
