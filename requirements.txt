@@ -5,3 +5,5 @@ pydeck
 streamlit
 requests
 plotly
+gitpython
+git-story
