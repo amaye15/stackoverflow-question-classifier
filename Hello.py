@@ -33,7 +33,9 @@ class ZeroShotClassificationPipeline:
 
 
 # Streamlit app starts here
-st.title('Zero-Shot Classification with Hugging Face')
+st.title('The Hugging Stackflow')
+
+st.image("logo.png")
 
 # User input for the text
 input_text = st.text_area("Input Text", "Type your text here")
@@ -51,6 +53,7 @@ def classify_text(_zero_shot_pipeline, input_text, candidate_labels):
     if "error" in response and "estimated_time" in response:  # Check if the model is still loading
         return response, True  # Return the response and a flag indicating to wait
     return response, False  # Return the response and a flag indicating no need to wait
+
 # Button to perform classification
 if st.button('Classify'):
     # Initialize the zero-shot classification pipeline
