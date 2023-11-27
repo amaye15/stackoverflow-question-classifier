@@ -115,7 +115,7 @@ if generate:
 
     input_text = sample["Title"].values[0]
 
-    candidate_labels = [*sample["Label"].values.tolist(), *df["Label"].unique()[:5].tolist()]
+    candidate_labels = [*sample["Label"].values.tolist(), *df["Label"].unique().sample(5).tolist()]
 
     # Initialize the zero-shot classification pipeline
     zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
@@ -138,7 +138,7 @@ if generate:
         fig = px.bar(x=scores, 
                      y=labels, 
                      orientation='h', 
-                     labels={'x':'Score', 'y':'Label'}, 
+                     labels={'x':'Score (%)', 'y':'Label'}, 
                      title= f"{sample['Label'].values[0]} - {input_text}", 
                      )
         fig.update_layout(xaxis_title='Score', yaxis_title='Label')
