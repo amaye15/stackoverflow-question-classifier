@@ -33,12 +33,15 @@ class ZeroShotClassificationPipeline:
 
 col1, col2, col3 = st.columns([0.2, 0.6, 0.2])
 
-with col2:
-
+with col1:
     st.image("logo.png")
-
+    
+with col2:
     # Streamlit app starts here
     st.title('The Hugging Stack',)
+
+with col3:
+    st.image("logo.png")
 
 
 # User input for the text
