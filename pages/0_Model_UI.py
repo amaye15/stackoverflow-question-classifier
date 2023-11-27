@@ -9,6 +9,8 @@ from functions import generate_title, ZeroShotClassificationPipeline
 
 generate_title()
 
+st.markdown("## Model UI")
+
 # User input for the text
 input_text = st.text_area("Write your question here:", "")
 
@@ -41,7 +43,6 @@ zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero
 
 # Button to perform classification
 if classify:
-
     # Display a loading message and make the API request
     with st.spinner('Checking model status...'):
         result, should_wait = classify_text(zero_shot_pipeline, input_text, candidate_labels)
@@ -54,7 +55,6 @@ if classify:
 
     # If there's no error, proceed to display results
     if not should_wait and 'labels' in result and 'scores' in result:
-
         # Extract the labels and scores
         labels = result['labels']
         scores = result['scores']
