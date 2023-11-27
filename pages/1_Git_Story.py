@@ -21,7 +21,7 @@ import os
 def get_git_commits():
     # Use subprocess to execute the git log command and capture the output
     git_log_output = subprocess.check_output(
-        ['git', 'log', '--pretty=format:%h,%an,%ad,%s', '--date'],
+        ['git', 'log', '--pretty=format:%h,%an,%ad,%s'],
         encoding='utf-8'
     )
     # Split the output into lines and then into a list of lists
@@ -33,6 +33,7 @@ def get_git_commits():
     df_commits = pd.DataFrame(commit_data, columns=['hash', 'author', 'date', 'message'])
     df_commits['date'] = pd.to_datetime(df_commits['date'])
     # Add an index column that will serve as a quantitative scale for the y-axis
+    df_commits['index'] = range(len(df_commits))
     return df_commits
 
 # Load the commit data
