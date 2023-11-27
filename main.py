@@ -116,7 +116,7 @@ if generate:
 
     input_text = sample["Title"].values[0]
 
-    candidate_labels = [*sample["Label"].values.tolist(), *np.random.choice(df["Label"].value_counts()[:6], size=5).tolist()]
+    candidate_labels = [*sample["Label"].values.tolist(), *np.random.choice(list(df["Label"].value_counts().to_dict().keys())[:10], size=5).tolist()]
 
     # Initialize the zero-shot classification pipeline
     zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
