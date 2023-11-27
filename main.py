@@ -19,8 +19,7 @@ import requests
 import plotly.express as px
 import time
 
-with st.sidebar:
-    st.sidebar["main"] = "Model UI"
+st.sidebar.["main"] = "Model UI"
 
 #st.sidebar.header("Questions")
 #st.set_page_config(page_title="Model UI", page_icon="📹")
