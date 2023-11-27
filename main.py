@@ -139,7 +139,7 @@ if generate:
                      y=labels, 
                      orientation='h', 
                      labels={'x':'Score', 'y':'Label'}, 
-                     title='Zero-Shot Classification Results', 
+                     title=input_text, 
                      )
         fig.update_layout(xaxis_title='Score', yaxis_title='Label')
         # Display the Plotly bar plot
