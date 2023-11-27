@@ -31,17 +31,21 @@ class ZeroShotClassificationPipeline:
         response = requests.post(self.api_url, headers=self.headers, json=data)
         return response.json()
 
-st.image("logo.png")
+col1, col2, col3 = st.columns(3)
 
-# Streamlit app starts here
-st.title('The Hugging Stack')
+with col2:
+
+    st.image("logo.png")
+
+    # Streamlit app starts here
+    st.title('The Hugging Stack')
 
 
 # User input for the text
-input_text = st.text_area("Write your question here", "Type your text here")
+input_text = st.text_area("Write your question here", "")
 
 # User input for the labels, separated by commas
-input_labels = st.text_input("Add your programming languages here", "Type your labels here separated by comma")
+input_labels = st.text_input("Add your programming languages here", "")
 
 # Convert string of labels into a list
 candidate_labels = [label.strip() for label in input_labels.split(',') if label]  # Ensure no empty strings
