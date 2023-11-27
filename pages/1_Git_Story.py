@@ -23,11 +23,9 @@ def get_git_commits():
         ['git', 'log', '--pretty=format:%h,%an,%ad,%s', '--date=short'],
         encoding='utf-8'
     )
-    print(git_log_output)
     # Split the output into lines and then into a list of lists
     lines = git_log_output.strip().split('\n')
 
-    print(lines)
     commit_data = [line.split(',', 3) for line in lines]
     
     # Convert to DataFrame
@@ -41,14 +39,15 @@ df_commits = get_git_commits()
 # Sort the commits by date
 df_commits.sort_values('date', inplace=True)
 
-print(df_commits, flush=True)
 
-# Create an interactive chart using Altair
+# Create an interactive chart using Altair with a vertical timeline
 chart = alt.Chart(df_commits).mark_circle(size=60).encode(
-    x='date:T',
-    y='author:N',
+    y='date:T',  # Dates are now on the y-axis
+    x='author:N',  # Authors are on the x-axis
     color='author:N',
     tooltip=['date:T', 'author:N', 'message:N', 'hash:N']
+).properties(
+    height=600  # You might want to adjust the height to fit all your data
 ).interactive()
 
 st.title('Git Commit History Timeline')
