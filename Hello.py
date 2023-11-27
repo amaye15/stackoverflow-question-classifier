@@ -81,12 +81,12 @@ if st.button('Classify'):
         labels.reverse()
         scores.reverse()
         # Create a Plotly bar plot
-        fig = px.bar(
-            x=scores, y=labels, 
-            orientation='h', 
-            labels={'x':'Score', 'y':'Label'},
-            title='Zero-Shot Classification Results'
-        )
+        fig = px.bar(x=scores, 
+                     y=labels, 
+                     orientation='h', 
+                     labels={'x':'Score', 'y':'Label'}, 
+                     title='Zero-Shot Classification Results', 
+                     )
         fig.update_layout(xaxis_title='Score', yaxis_title='Label')
         # Display the Plotly bar plot
         st.plotly_chart(fig)
