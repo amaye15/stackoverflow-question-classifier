@@ -24,14 +24,18 @@ def api_demo() -> None:
         return response.json()
 
     output = query({
-        "inputs": "Hi, I recently bought a device from your company but it is not working as advertised and I would like to get reimbursed!",
-        "parameters": {"candidate_labels": ["refund", "legal", "faq"]},
+        "inputs": "Simulation of Service using Mockito 2 leads to stubbing error",
+        "parameters": {"candidate_labels": ['java', 'javascript', 'c#', 'python', 'git', 'c++', 'ios', 'android']},
     })
 
 
-st.set_page_config(page_title="Model API", page_icon="📹")
-st.markdown("# Model API")
+col1, col2, col3 = st.columns([0.2, 0.6, 0.2])
 
-
+with col1:
+    st.image("./images/logo.png")
+with col2:
+    st.markdown("<h1 style='text-align: center;'>The Hugging Stack</h1>", unsafe_allow_html=True)
+with col3:
+    st.image("./images/logo.png")
 
 show_code(api_demo)
