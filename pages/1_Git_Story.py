@@ -24,7 +24,7 @@ if os.path.exists(video_path):
 
 # Use subprocess to call git-story and generate the video
 try:
-    subprocess.run(['git-story', '-o', video_path], check=True)
+    subprocess.run(['git-story'], check=True)
     # Display the video in Streamlit
     st.video(video_path)
 except subprocess.CalledProcessError as e:
