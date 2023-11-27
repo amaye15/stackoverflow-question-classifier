@@ -26,10 +26,11 @@ def api_demo() -> None:
 
     output = query({
         "inputs": "Simulation of Service using Mockito 2 leads to stubbing error",
-        "parameters": {"candidate_labels": ['java', 'javascript', 'c#', 'python', 'git', 'c++', 'ios', 'android']},
+        "parameters": {"candidate_labels": ['java', 'javascript', 'c#',]},
     })
 
 
 generate_title()
 
+st.write("Copy & Paste:")
 show_code(api_demo)
