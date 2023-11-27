@@ -31,7 +31,7 @@ def api_demo() -> None:
 
 st.set_page_config(page_title="Model API", page_icon="📹")
 st.markdown("# Model API")
-st.sidebar.header("Model API")
+
 
 
 show_code(api_demo)
