@@ -16,6 +16,11 @@ import pandas as pd
 import altair as alt
 import subprocess
 
+import streamlit as st
+import pandas as pd
+import altair as alt
+import subprocess
+
 # Function to get commits from git log
 def get_git_commits():
     # Use subprocess to execute the git log command and capture the output
@@ -31,26 +36,31 @@ def get_git_commits():
     # Convert to DataFrame
     df_commits = pd.DataFrame(commit_data, columns=['hash', 'author', 'date', 'message'])
     df_commits['date'] = pd.to_datetime(df_commits['date'])
+    # Add an index column that will serve as a quantitative scale for the y-axis
+    df_commits['index'] = range(len(df_commits))
     return df_commits
 
 # Load the commit data
 df_commits = get_git_commits()
 
-# Sort the commits by date
-df_commits.sort_values('date', inplace=True)
+# We do not need to sort by date since we're plotting by commit index
+# df_commits.sort_values('date', inplace=True)
 
+print(df_commits, flush=True)
 
-# Create an interactive chart using Altair with a vertical timeline
+# Create an interactive chart using Altair with commits on the y-axis
 chart = alt.Chart(df_commits).mark_circle(size=60).encode(
-    y='date:T',  # Dates are now on the y-axis
+    y=alt.Y('index:Q', title='Commit Number'),  # Using the index for the y-axis
     x='author:N',  # Authors are on the x-axis
     color='author:N',
-    tooltip=['date:T', 'author:N', 'message:N', 'hash:N']
+    tooltip=['index:Q', 'author:N', 'message:N', 'hash:N']
 ).properties(
     height=600  # You might want to adjust the height to fit all your data
 ).interactive()
 
-st.title('Git Commit History Timeline')
+st.title('Git Commit History')
+st.altair_chart(chart, use_container_width=True)
+
 st.altair_chart(chart, use_container_width=True)
 
 
