@@ -17,6 +17,9 @@ import requests
 import plotly.express as px
 import time
 
+st.sidebar.header("Questions")
+
+
 # Define the wrapper class as before
 class ZeroShotClassificationPipeline:
     def __init__(self, model_name, api_token):
