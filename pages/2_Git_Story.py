@@ -9,7 +9,6 @@ import streamlit as st
 from functions import generate_title, get_git_commits
 
 
-
 # Ttile
 generate_title()
 
