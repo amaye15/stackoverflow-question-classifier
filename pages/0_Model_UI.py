@@ -27,7 +27,7 @@ def classify_text(_zero_shot_pipeline, input_text, candidate_labels):
     print(response, flush=True)
     return response, False  # Return the response and a flag indicating no need to wait
 
-but1, but2, _ = st.columns([0.1,0.1,0.8])
+but1, but2, _ = st.columns([0.1,0.1,0.6])
 
 with but1:
     classify = st.button('Classify')
