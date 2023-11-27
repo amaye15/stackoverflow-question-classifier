@@ -45,7 +45,7 @@ st.dataframe(df_commits, use_container_width=True)
 # df_commits.sort_values('date', inplace=True)
 
 # Path for the generated video
-video_path = '/app/stackoverflow-question-classifier/git-story_media/videos/480p15/GitStory.mp4'
+video_path = 'stackoverflow-question-classifier/git-story_media/videos/480p15/GitStory.mp4'
 
 # Check if the video already exists and delete it if so
 if os.path.exists(video_path):
