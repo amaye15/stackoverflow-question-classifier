@@ -1,4 +1,7 @@
 import streamlit as st
+import requests
+import subprocess
+import pandas as pd
 
 
 
@@ -27,3 +30,22 @@ class ZeroShotClassificationPipeline:
         }
         response = requests.post(self.api_url, headers=self.headers, json=data)
         return response.json()
+    
+# Function to get commits from git log
+def get_git_commits():
+    # Use subprocess to execute the git log command and capture the output
+    git_log_output = subprocess.check_output(
+        ['git', 'log', '--pretty=format:%h,%an,%ad,%s'],
+        encoding='utf-8'
+    )
+    # Split the output into lines and then into a list of lists
+    lines = git_log_output.strip().split('\n')
+
+    commit_data = [line.split(',', 3) for line in lines]
+    
+    # Convert to DataFrame
+    df_commits = pd.DataFrame(commit_data, columns=['hash', 'author', 'date', 'message'])
+    df_commits['date'] = pd.to_datetime(df_commits['date'])
+    # Add an index column that will serve as a quantitative scale for the y-axis
+    #df_commits['index'] = range(len(df_commits))
+    return df_commits

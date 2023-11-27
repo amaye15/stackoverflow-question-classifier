@@ -32,5 +32,5 @@ def api_demo() -> None:
 
 generate_title()
 
-st.write("Copy & Paste:")
+st.markdown("## Read API")
 show_code(api_demo)
