@@ -12,61 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import streamlit as st
-import pandas as pd
-import altair as alt
 import subprocess
+import os
 
-import streamlit as st
-import pandas as pd
-import altair as alt
-import subprocess
+# Path for the generated video
+video_path = 'git_history_video.mp4'
 
-# Function to get commits from git log
-def get_git_commits():
-    # Use subprocess to execute the git log command and capture the output
-    git_log_output = subprocess.check_output(
-        ['git', 'log', '--pretty=format:%h,%an,%ad,%s', '--date=short'],
-        encoding='utf-8'
-    )
-    # Split the output into lines and then into a list of lists
-    lines = git_log_output.strip().split('\n')
+# Check if the video already exists and delete it if so
+if os.path.exists(video_path):
+    os.remove(video_path)
 
-    commit_data = [line.split(',', 3) for line in lines]
-    
-    # Convert to DataFrame
-    df_commits = pd.DataFrame(commit_data, columns=['hash', 'author', 'date', 'message'])
-    df_commits['date'] = pd.to_datetime(df_commits['date'])
-    # Add an index column that will serve as a quantitative scale for the y-axis
-    df_commits['index'] = range(len(df_commits))
-    return df_commits
+# Use subprocess to call git-story and generate the video
+try:
+    subprocess.run(['git-story', '-o', video_path], check=True)
+    # Display the video in Streamlit
+    st.video(video_path)
+except subprocess.CalledProcessError as e:
+    st.error(f"An error occurred while generating the video: {e}")
+except Exception as e:
+    st.error(f"An unexpected error occurred: {e}")
 
-# Load the commit data
-df_commits = get_git_commits()
-
-st.dataframe(df_commits,use_container_width=True)
-
-# We do not need to sort by date since we're plotting by commit index
-# df_commits.sort_values('date', inplace=True)
-
-print(df_commits, flush=True)
-
-# Create an interactive chart using Altair with commits on the y-axis
-chart = alt.Chart(df_commits).mark_circle(size=60).encode(
-    y=alt.Y('index:Q', title='Commit Number'),  # Using the index for the y-axis
-    x='author:N',  # Authors are on the x-axis
-    color='author:N',
-    tooltip=['index:Q', 'author:N', 'message:N', 'hash:N']
-).properties(
-    height=600  # You might want to adjust the height to fit all your data
-).interactive()
-
-st.title('Git Commit History')
-st.altair_chart(chart, use_container_width=True)
-
-st.altair_chart(chart, use_container_width=True)
-
-
-#st.set_page_config(page_title="Git Story", page_icon="📈")
-#st.markdown("# Git Story")
-#st.sidebar.header("Git Story")
 
