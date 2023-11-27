@@ -18,7 +18,7 @@ import plotly.express as px
 import time
 
 #st.sidebar.header("Questions")
-#st.set_page_config(page_title="Model UI", page_icon="📹")
+st.set_page_config(page_title="Model UI", page_icon="📹")
 
 # Define the wrapper class as before
 class ZeroShotClassificationPipeline:
