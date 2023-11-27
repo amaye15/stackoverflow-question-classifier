@@ -39,7 +39,7 @@ df_commits = get_git_commits()
 # Sort the commits by date
 df_commits.sort_values('date', inplace=True)
 
-print(df_commits)
+print(df_commits, flush=True)
 
 # Create an interactive chart using Altair
 chart = alt.Chart(df_commits).mark_circle(size=60).encode(
