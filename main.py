@@ -113,7 +113,7 @@ if generate:
 
     sample = df.sample(1)
 
-    input_text = sample["Title"][0]
+    input_text = sample["Title"].values[0]
 
     candidate_labels = df["Label"].unique().tolist()
 
