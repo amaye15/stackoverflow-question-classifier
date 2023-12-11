@@ -24,4 +24,6 @@ jobs:
           rm -rf dataset
           git clone https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification
           ls -a
+          git add .
+          git commit -m "Added Stack Overflow Zero-Shot Classification dataset"
           git push
