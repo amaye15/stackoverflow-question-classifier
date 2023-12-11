@@ -20,7 +20,6 @@ jobs:
 
       - name: Huggingface Data
         run: |
-          git clone https://github.com/amaye15/stackoverflow-question-classifier.git
           git submodule add https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification dataset
           git add .
           git push
