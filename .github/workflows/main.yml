@@ -21,10 +21,10 @@ jobs:
       - name: Huggingface Submodules
         run: |
           # Check if each submodule exists, and if not, add them
-          if ! grep -q 'Stack-Overflow-Zero-Shot-Classification dataset' .gitmodules; then
+          if ! grep -q 'dataset' .gitmodules; then
             git submodule add https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification dataset
           fi
-          if ! grep -q 'Stack-Overflow-Zero-Shot-Classification model' .gitmodules; then
+          if ! grep -q 'model' .gitmodules; then
             git submodule add https://huggingface.co/amaye15/Stack-Overflow-Zero-Shot-Classification model
           fi
 
