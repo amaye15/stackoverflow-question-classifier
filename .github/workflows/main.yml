@@ -1,10 +1,11 @@
 name: Link Repositories
 
 on:
+  schedule:
+    - cron: '0 0 * * *'  # This will run the workflow every night at midnight UTC
   push:
     branches:
-      - main  # Trigger on push to main branch, modify as needed
-
+      - main  # Also trigger on push to main branch
 jobs:
   merge:
     runs-on: ubuntu-latest
