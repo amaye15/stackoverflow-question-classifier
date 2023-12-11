@@ -15,9 +15,9 @@ jobs:
 
       - name: Setup Git
         run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-email@example.com'
-          git remote add huggingface https://huggingface.co/amaye15/Stack-Overflow-Zero-Shot-Classification.git
+          git config --global user.name 'amaye15'
+          git config --global user.email 'andrewmayes14@hotmail.com'
+          git remote add huggingface https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification
           git fetch huggingface
 
       - name: Merge Hugging Face repository
