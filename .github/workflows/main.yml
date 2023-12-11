@@ -20,8 +20,8 @@ jobs:
 
       - name: Huggingface Data
         run: |
-          git rm --cached Stack-Overflow-Zero-Shot-Classification
-          git rm --cached dataset
+          rm -rf Stack-Overflow-Zero-Shot-Classification
+          rm -rf dataset
           git clone https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification
           ls -a
           git push
