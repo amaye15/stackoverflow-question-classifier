@@ -21,7 +21,6 @@ jobs:
       - name: Huggingface Data
         run: |
           rm -rf Stack-Overflow-Zero-Shot-Classification
-          git merge https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification
           ls -a
           git add .
           git commit -m "Added Stack Overflow Zero-Shot Classification dataset"
