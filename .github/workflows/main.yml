@@ -13,15 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Git
+      - name: Set up Git LFS
         run: |
-          git config --global user.name 'amaye15'
-          git config --global user.email 'andrewmayes14@hotmail.com'
-          git remote add huggingface https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification
-          git fetch huggingface
-
-      - name: Merge Hugging Face repository
-        run: |
-          git checkout -b merge-huggingface
-          git merge huggingface/main  # Adjust branch name as necessary
-          git push origin merge-huggingface
+          sudo apt-get install git-lfs
+          git lfs install
