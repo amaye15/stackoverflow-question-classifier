@@ -20,8 +20,6 @@ jobs:
 
       - name: Huggingface Data
         run: |
-          rm -rf Stack-Overflow-Zero-Shot-Classification
-          rm -rf dataset
           git clone https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification
           ls -a
           cd Stack-Overflow-Zero-Shot-Classification
