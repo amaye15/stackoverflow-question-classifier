@@ -1,3 +1,6 @@
 [submodule "dataset"]
 	path = dataset
 	url = https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification
+[submodule "model"]
+	path = model
+	url = https://huggingface.co/amaye15/Stack-Overflow-Zero-Shot-Classification
