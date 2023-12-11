@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Git LFS
+      - name: Hugginface Data
         run: |
-          sudo apt-get install git-lfs
-          git lfs install
+          git clone https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification
+          
