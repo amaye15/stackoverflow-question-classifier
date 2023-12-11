@@ -22,4 +22,5 @@ jobs:
         run: |
           git submodule add https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification dataset
           git add .
+          git commit -m "Added Stack Overflow Zero-Shot Classification dataset"
           git push
