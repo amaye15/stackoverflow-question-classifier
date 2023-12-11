@@ -1,4 +1,4 @@
-name: Merge Hugging Face Repository
+name: Link Repositories
 
 on:
   push:
