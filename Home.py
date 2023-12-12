@@ -27,6 +27,8 @@ import time
 def my_task():
     # Replace this with the task you want to perform
 
+    input_text = "Write your question here:"
+
     # Initialize the zero-shot classification pipeline
     zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
 
