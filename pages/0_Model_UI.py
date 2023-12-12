@@ -5,7 +5,7 @@ import numpy as np
 import requests
 import plotly.express as px
 import time
-from functions import generate_title, ZeroShotClassificationPipeline
+from functions import generate_title, ZeroShotClassificationPipeline, classify_text
 
 generate_title()
 
@@ -19,15 +19,6 @@ input_labels = st.text_input("Add your programming languages here:", "")
 
 # Convert string of labels into a list
 candidate_labels = [label.strip() for label in input_labels.split(',') if label]  # Ensure no empty strings
-
-# Function to handle API requests and retry if model is loading
-@st.cache_data(ttl=30, show_spinner=False)  # Cache the function call to prevent re-runs on every interaction
-def classify_text(_zero_shot_pipeline, input_text, candidate_labels):
-    response = zero_shot_pipeline(input_text, candidate_labels)
-    if "error" in response and "estimated_time" in response:  # Check if the model is still loading
-        return response, True  # Return the response and a flag indicating to wait
-    print(response, flush=True)
-    return response, False  # Return the response and a flag indicating no need to wait
 
 but1, but2, _ = st.columns([0.15,0.16,0.8])
 
