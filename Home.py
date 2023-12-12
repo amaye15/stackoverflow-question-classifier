@@ -39,9 +39,9 @@ def my_task():
 
     # If the model was loading, wait for the estimated time and then retry
     while should_wait:
-        with st.spinner(f'Model is loading, please wait... Estimated time: {result["estimated_time"]:.2f} seconds'):
-            time.sleep(result["estimated_time"])  # Wait for the estimated time
-            result, should_wait = classify_text(zero_shot_pipeline, input_text, candidate_labels)
+        #with st.spinner(f'Model is loading, please wait... Estimated time: {result["estimated_time"]:.2f} seconds'):
+        time.sleep(result["estimated_time"])  # Wait for the estimated time
+        result, should_wait = classify_text(zero_shot_pipeline, input_text, candidate_labels)
     print("Task executed")
 
 while True:
