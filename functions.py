@@ -53,7 +53,7 @@ def get_git_commits():
 # Function to handle API requests and retry if model is loading
 @st.cache_data(ttl=30, show_spinner=False)  # Cache the function call to prevent re-runs on every interaction
 def classify_text(_zero_shot_pipeline, input_text, candidate_labels):
-    response = zero_shot_pipeline(input_text, candidate_labels)
+    response = _zero_shot_pipeline(input_text, candidate_labels)
     if "error" in response and "estimated_time" in response:  # Check if the model is still loading
         return response, True  # Return the response and a flag indicating to wait
     print(response, flush=True)
