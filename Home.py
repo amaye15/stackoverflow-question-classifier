@@ -46,7 +46,6 @@ def my_task():
 
 while True:
     st.markdown("""
-## Leveraging Advanced AI with Hugging Face's DeBERTa Model
 
 ### Harnessing Cutting-Edge Technology for Enhanced Tag Suggestions
 
