@@ -22,22 +22,6 @@ from functions import generate_title, ZeroShotClassificationPipeline, classify_t
 
 generate_title()
 
-st.markdown("""
-## Welcome to Our Stack Overflow Community Contribution Project!
-
-Hello and welcome!
-
-As a fellow enthusiast of Stack Overflow, a platform that has often been our go-to solution for tackling tough development questions, we understand the importance of giving back to the community that has helped us so much. This is why we are thrilled to announce an exciting opportunity for you to contribute to the betterment of Stack Overflow.
-
-## Join Our Tag Management Enhancement Initiative!
-
-Stack Overflow is all set to enhance the tag management system, which is crucial for streamlining the question-answering process, especially for our new users. Currently, when users post questions, they often face challenges in selecting the most relevant tags. To address this, we are planning to introduce an automated tag suggestion feature.
-
-## Be a Part of This Transformative Journey
-
-By participating in this initiative, not only will you contribute to a platform that has been a valuable resource for developers worldwide, but you will also sharpen your skills in machine learning and data analysis.            
-""")
-
 import time
 
 def my_task():
@@ -61,5 +45,20 @@ def my_task():
     print("Task executed")
 
 while True:
+    st.markdown("""
+## Welcome to Our Stack Overflow Community Contribution Project!
+
+Hello and welcome!
+
+As a fellow enthusiast of Stack Overflow, a platform that has often been our go-to solution for tackling tough development questions, we understand the importance of giving back to the community that has helped us so much. This is why we are thrilled to announce an exciting opportunity for you to contribute to the betterment of Stack Overflow.
+
+## Join Our Tag Management Enhancement Initiative!
+
+Stack Overflow is all set to enhance the tag management system, which is crucial for streamlining the question-answering process, especially for our new users. Currently, when users post questions, they often face challenges in selecting the most relevant tags. To address this, we are planning to introduce an automated tag suggestion feature.
+
+## Be a Part of This Transformative Journey
+
+By participating in this initiative, not only will you contribute to a platform that has been a valuable resource for developers worldwide, but you will also sharpen your skills in machine learning and data analysis.            
+""")
     my_task()           # Execute the task
     time.sleep(300)     # Wait for 300 seconds (5 minutes)
