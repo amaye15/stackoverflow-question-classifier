@@ -46,19 +46,27 @@ def my_task():
 
 while True:
     st.markdown("""
-## Welcome to Our Stack Overflow Community Contribution Project!
+## Leveraging Advanced AI with Hugging Face's DeBERTa Model
 
-Hello and welcome!
+### Harnessing Cutting-Edge Technology for Enhanced Tag Suggestions
 
-As a fellow enthusiast of Stack Overflow, a platform that has often been our go-to solution for tackling tough development questions, we understand the importance of giving back to the community that has helped us so much. This is why we are thrilled to announce an exciting opportunity for you to contribute to the betterment of Stack Overflow.
+In our quest to revolutionize Stack Overflow's tag management system, we are excited to incorporate the power of Hugging Face's "deberta-v3-base-zeroshot-v1" model. This advanced AI model represents a significant leap in natural language processing (NLP) capabilities.
 
-## Join Our Tag Management Enhancement Initiative!
+### Why DeBERTa V3?
 
-Stack Overflow is all set to enhance the tag management system, which is crucial for streamlining the question-answering process, especially for our new users. Currently, when users post questions, they often face challenges in selecting the most relevant tags. To address this, we are planning to introduce an automated tag suggestion feature.
+- **State-of-the-Art NLP**: The DeBERTa (Decoding-enhanced BERT with disentangled attention) model is at the forefront of NLP technology. It brings enhanced understanding and interpretation of the context and semantics of Stack Overflow questions.
+- **Zero-Shot Learning Capabilities**: This model is specially designed for zero-shot learning, allowing it to understand and categorize content effectively without extensive training on specific tagging examples from Stack Overflow. This means it can start providing accurate tag suggestions almost immediately.
+- **Adaptability and Efficiency**: The DeBERTa model adapts to the unique language and technical terms of Stack Overflow. It efficiently processes queries, ensuring a seamless user experience.
 
-## Be a Part of This Transformative Journey
+### Impact on Our Tag Suggestion Feature
 
-By participating in this initiative, not only will you contribute to a platform that has been a valuable resource for developers worldwide, but you will also sharpen your skills in machine learning and data analysis.            
-""")
+By integrating the DeBERTa V3 model, our automated tag suggestion system will not only become more accurate but also more intuitive. It will be capable of understanding a wide range of programming queries and suggesting the most relevant tags, even for complex or less common questions.
+
+This cutting-edge technology ensures that our tag management system will be incredibly effective in assisting both new and experienced users in navigating and contributing to the vast knowledge base of Stack Overflow.
+
+### Join Us in This Technological Leap
+
+Your contribution to this project helps in fine-tuning this advanced AI model for our specific use-case, making Stack Overflow more accessible and efficient for millions of users worldwide. Be a part of this exciting journey in harnessing AI to empower our community!
+                """)
     my_task()           # Execute the task
     time.sleep(300)     # Wait for 300 seconds (5 minutes)
