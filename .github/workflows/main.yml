@@ -19,7 +19,7 @@ jobs:
           git config --global user.name 'amaye15'
           git config --global user.email 'andrewmayes14@hotmail.com'
 
-      - name: Huggingface Submodules
+      - name: Submodules
         run: |
           # Check if each submodule exists, and if not, add them
           if ! grep -q 'dataset' .gitmodules; then
@@ -27,6 +27,9 @@ jobs:
           fi
           if ! grep -q 'model' .gitmodules; then
             git submodule add https://huggingface.co/amaye15/Stack-Overflow-Zero-Shot-Classification model
+          fi
+          if ! grep -q 'experiments' .gitmodules; then
+            git submodule add https://dagshub.com/andrewmayes14/mlflow/experiments/#/ experiments
           fi
 
           # Update submodules
