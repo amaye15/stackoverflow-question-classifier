@@ -4,3 +4,6 @@
 [submodule "model"]
 	path = model
 	url = https://huggingface.co/amaye15/Stack-Overflow-Zero-Shot-Classification
+[submodule "experiments"]
+	path = experiments
+	url = https://dagshub.com/andrewmayes14/mlflow
