@@ -29,7 +29,7 @@ jobs:
             git submodule add https://huggingface.co/amaye15/Stack-Overflow-Zero-Shot-Classification model
           fi
           if ! grep -q 'experiments' .gitmodules; then
-            git submodule add https://dagshub.com/andrewmayes14/mlflow.git experiments
+            git submodule add https://dagshub.com/andrewmayes14/mlflow experiments
           fi
 
           # Update submodules
