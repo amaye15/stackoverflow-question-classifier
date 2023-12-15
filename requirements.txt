@@ -9,3 +9,5 @@ manim
 gitpython
 git-story
 nltk
+torch
+transformers

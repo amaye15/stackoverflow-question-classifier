@@ -1,7 +1,7 @@
 import inspect
 import textwrap
 import streamlit as st
-from functions import generate_title, ZeroShotClassificationPipeline
+from pages.functions import generate_title, ZeroShotClassificationPipeline
 
 def show_code(demo):
     """Showing the code of the demo."""
