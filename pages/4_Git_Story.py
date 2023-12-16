@@ -6,7 +6,7 @@ import subprocess
 import pandas as pd
 import streamlit as st
 
-from pages.functions import generate_title, get_git_commits
+from functions import generate_title, get_git_commits
 
 
 # Ttile

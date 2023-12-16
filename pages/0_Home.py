@@ -18,7 +18,7 @@ import numpy as np
 import requests
 import plotly.express as px
 import time
-from pages.functions import generate_title, ZeroShotClassificationPipeline, classify_text
+from functions import generate_title, ZeroShotClassificationPipeline, classify_text
 
 generate_title()
 
