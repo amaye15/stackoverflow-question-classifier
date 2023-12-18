@@ -9,3 +9,4 @@ manim
 gitpython
 git-story
 nltk
+fastapi
