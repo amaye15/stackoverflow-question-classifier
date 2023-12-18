@@ -10,3 +10,4 @@ gitpython
 git-story
 nltk
 fastapi
+mlflow
