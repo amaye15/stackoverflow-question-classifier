@@ -25,8 +25,8 @@ but1, but2, _ = st.columns([0.15,0.16,0.8])
 with but1:
     classify = st.button('Classify')
 
-with but2:
-    generate = st.button('Generate')
+# with but2:
+#     generate = st.button('Generate')
 
 # Initialize the zero-shot classification pipeline
 zero_shot_pipeline = ZeroShotClassificationPipeline("amaye15/Stack-Overflow-Zero-Shot-Classification", st.secrets.Authorization)
