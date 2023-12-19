@@ -15,10 +15,10 @@ st.markdown("## Model UI")
 input_text = st.text_area("Write your question here:", "")
 
 # User input for the labels, separated by commas
-input_labels = st.text_input("Add your programming languages here:", "")
+input_labels = st.text_input("Add your programming languages here:", "python, javascript, java, c#, android, c++, php, git, ios, html'")
 
 # Convert string of labels into a list
-candidate_labels = [label.strip() for label in input_labels.split(',') if label]  # Ensure no empty strings
+candidate_labels = [label.strip() for label in input_labels.replace(" ", "").split(',') if label]  # Ensure no empty strings
 
 but1, but2, _ = st.columns([0.15,0.16,0.8])
 
