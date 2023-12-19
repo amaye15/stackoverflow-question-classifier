@@ -20,7 +20,7 @@ input_labels = st.text_input("Add your programming languages here:", "python, ja
 # Convert string of labels into a list
 candidate_labels = [label.strip() for label in input_labels.replace(" ", "").split(',') if label]  # Ensure no empty strings
 
-but1, but2, _ = st.columns([0.15,0.16,0.8])
+but1, _ , _ = st.columns([0.15,0.16,0.8])
 
 with but1:
     classify = st.button('Classify')
