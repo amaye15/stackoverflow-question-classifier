@@ -1,5 +1,9 @@
 # Automatic Stack Overflow Question Classifier
 
+## Important
+
+All credit goes to huggingface user [MoritzLaurer](https://huggingface.co/MoritzLaurer) as his model is the basis for this project.
+
 ## Introduction
 The Automatic Stack Overflow Question Classifier harnesses the latest advancements in artificial intelligence to systematically categorize questions on Stack Overflow. Its primary goal is to streamline the process of sorting queries, enhancing navigability, and improving the overall user experience on the platform.
 
