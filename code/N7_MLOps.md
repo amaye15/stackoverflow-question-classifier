@@ -1,4 +1,4 @@
-#### Introduction 
+#### Introduction
 
 Dans le domaine en évolution du machine learning, les MLOps jouent un rôle clé. Ils représentent les pratiques et technologies facilitant le déploiement et la maintenance efficaces des modèles de machine learning. Les MLOps comblent le fossé entre le développement et les opérations, assurant l'intégration sans heurt des modèles dans les environnements de production pour une amélioration et une surveillance continues.
 
