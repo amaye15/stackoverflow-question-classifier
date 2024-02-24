@@ -1,42 +1,42 @@
-name: Link Repositories
+# name: Link Repositories
 
-on:
-  schedule:
-    - cron: '0 0 * * *'  # This will run the workflow every night at midnight UTC
-  push:
-    branches:
-      - main  # Also trigger on push to main branch
-jobs:
-  merge:
-    runs-on: ubuntu-latest
+# on:
+#   schedule:
+#     - cron: '0 0 * * *'  # This will run the workflow every night at midnight UTC
+#   push:
+#     branches:
+#       - main  # Also trigger on push to main branch
+# jobs:
+#   merge:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
 
-      - name: Setup Git
-        run: |
-          git config --global user.name 'amaye15'
-          git config --global user.email 'andrewmayes14@hotmail.com'
+#       - name: Setup Git
+#         run: |
+#           git config --global user.name 'amaye15'
+#           git config --global user.email 'andrewmayes14@hotmail.com'
 
-      - name: Submodules
-        run: |
-          # Check if each submodule exists, and if not, add them
-          if ! grep -q 'dataset' .gitmodules; then
-            git submodule add https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification dataset
-          fi
-          if ! grep -q 'model' .gitmodules; then
-            git submodule add https://huggingface.co/amaye15/Stack-Overflow-Zero-Shot-Classification model
-          fi
-          if ! grep -q 'experiments' .gitmodules; then
-            git submodule add https://dagshub.com/andrewmayes14/mlflow experiments
-          fi
+#       - name: Submodules
+#         run: |
+#           # Check if each submodule exists, and if not, add them
+#           if ! grep -q 'dataset' .gitmodules; then
+#             git submodule add https://huggingface.co/datasets/amaye15/Stack-Overflow-Zero-Shot-Classification dataset
+#           fi
+#           if ! grep -q 'model' .gitmodules; then
+#             git submodule add https://huggingface.co/amaye15/Stack-Overflow-Zero-Shot-Classification model
+#           fi
+#           if ! grep -q 'experiments' .gitmodules; then
+#             git submodule add https://dagshub.com/andrewmayes14/mlflow experiments
+#           fi
 
-          # Update submodules
-          git submodule update --remote 
+#           # Update submodules
+#           git submodule update --remote 
 
-          # Commit changes
-          git add .
-          git commit -m "Git modules added & updated" || echo "No changes to commit"
-          git push
+#           # Commit changes
+#           git add .
+#           git commit -m "Git modules added & updated" || echo "No changes to commit"
+#           git push
 
